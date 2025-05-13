@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
-\Illuminate\Support\Facades\Auth::onceUsingId(1);
 
 Route::get('/', function (Request $request) {
     $query = $request->get('search');
@@ -66,8 +65,7 @@ Route::post('/checkout', function (OrderRequest $request) {
                 'order_id' => $order->id,
                 'name' => $product->name,
                 'price' => $product->price,
-            ];
-        }
+            ]}
     }
     $order->orderItems()->createMany($orderItemsToAdd);
     session()->forget('cartItems');
