@@ -65,7 +65,9 @@ Route::post('/checkout', function (OrderRequest $request) {
                 'order_id' => $order->id,
                 'name' => $product->name,
                 'price' => $product->price,
-            ]}
+            ];
+        }
+
     }
     $order->orderItems()->createMany($orderItemsToAdd);
     session()->forget('cartItems');
