@@ -2,12 +2,13 @@
 
 namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables;
+use Filament\Tables\Actions\AttachAction;
+use Filament\Tables\Actions\DetachAction;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ProductsRelationManager extends RelationManager
@@ -18,17 +19,7 @@ class ProductsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-                Select::make('categories')
-                    ->relationship('categories', 'name')
-                    ->multiple()
-                    ->preload()
-                    ->searchable()
-                    ->placeholder('Select categories'),
-                RichEditor::make('description')
-                    ->columnSpanFull()
-                    ->required(),
+
             ]);
     }
 
@@ -37,23 +28,30 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Stack::make([
+                    SpatieMediaLibraryImageColumn::make('images')
+                        ->height('auto')
+                        ->extraImgAttributes(['class' => 'w-full rounded aspect-square', 'style' => 'aspect-ratio: 1 / 1'])
+                        ->limit(1),
+                    TextColumn::make('name')
+                        ->weight('bold')
+                        ->size(TextColumn\TextColumnSize::Large)
+                        ->searchable()
+                    ,
+                ])
+
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make()
+                AttachAction::make()->label('Add Products')->preloadRecordSelect(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()->requiresConfirmation(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                DetachAction::make()->label('remove')
+            ])->contentGrid([
+                'xs' => 3,
+                'lg' => 5
             ]);
     }
 }

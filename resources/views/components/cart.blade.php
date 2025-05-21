@@ -18,7 +18,7 @@
                             <div class="mt-2">
                                 <input type="email" id="email-address" name="contact_email" autocomplete="email"
                                        required value="{{ old('contact_email') }}"
-                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                             </div>
                             @error('contact_email')
                             <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -30,7 +30,7 @@
                             <div class="mt-2">
                                 <input type="text" id="contact-phone-number" name="contact_phone_number"
                                        required value="{{ old('contact_phone_number') }}"
-                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                             </div>
                             @error('contact_phone_number')
                             <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -42,7 +42,7 @@
                             <div class="mt-2">
                                 <input type="text" id="contact-name" name="contact_name"
                                        required value="{{ old('contact_name') }}"
-                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                             </div>
                             @error('contact_name')
                             <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -61,7 +61,7 @@
                                     <input type="text" id="first-name" name="shipping_first_name"
                                            autocomplete="given-name"
                                            value="{{ old('shipping_first_name') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_first_name')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -75,7 +75,7 @@
                                     <input type="text" id="last-name" name="shipping_last_name"
                                            autocomplete="family-name"
                                            value="{{ old('shipping_last_name') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_last_name')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -89,7 +89,7 @@
                                     <input type="text" name="shipping_address" id="address"
                                            autocomplete="street-address"
                                            value="{{ old('shipping_address') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_address')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -103,7 +103,7 @@
                                 <div class="mt-2">
                                     <input type="text" name="shipping_apartment" id="apartment"
                                            value="{{ old('shipping_apartment') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_apartment')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -115,7 +115,7 @@
                                 <div class="mt-2">
                                     <input type="text" name="shipping_city" id="city" autocomplete="address-level2"
                                            value="{{ old('shipping_city') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_city')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -127,7 +127,7 @@
                                 <div class="mt-2 grid grid-cols-1">
                                     <input id="country" name="shipping_country" autocomplete="country-name"
                                            value="{{ old('shipping_country') }}"
-                                           class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                                           class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"/>
                                 </div>
                                 @error('shipping_country')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -140,7 +140,7 @@
                                 <div class="mt-2">
                                     <input type="text" name="shipping_state" id="region" autocomplete="address-level1"
                                            value="{{ old('shipping_state') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_state')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -153,7 +153,7 @@
                                 <div class="mt-2">
                                     <input type="text" name="shipping_zip" id="postal-code" autocomplete="postal-code"
                                            value="{{ old('shipping_zip') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_zip')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -165,7 +165,7 @@
                                 <div class="mt-2">
                                     <input type="text" name="shipping_phone_number" id="phone" autocomplete="tel"
                                            value="{{ old('shipping_phone_number') }}"
-                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                           class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">
                                 </div>
                                 @error('shipping_phone_number')
                                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -215,7 +215,7 @@
                                 x-show="!$store.cart.isEmpty()"
 
                                 type="submit"
-                                class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden">
+                                class="w-full rounded-md border border-transparent bg-orange-600 px-4 py-3 text-base font-medium text-white shadow-xs hover:bg-orange-700 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden">
 
                                 Confirm Order
                             </button>

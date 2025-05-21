@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('name');
             $table->decimal('price');
             $table->text('description');
+            $table->text('specification')->nullable();
             $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });

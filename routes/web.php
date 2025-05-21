@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Requests\OrderRequest;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+
+Auth::onceUsingId(1);
 
 
 Route::get('/', function (Request $request) {
@@ -19,6 +22,7 @@ Route::get('/', function (Request $request) {
         ->paginate(10);
     return view('welcome', [
         'products' => $products,
+        'categories' => Category::all()
     ]);
 })->name('home');
 
@@ -76,3 +80,11 @@ Route::post('/checkout', function (OrderRequest $request) {
 
 
 Route::view('/success', 'success')->name('success');
+
+Route::get('/categories/{category}', function (Category $category) {
+    $products = $category->products()->whereNotNull('published_at')->paginate(10);
+    return view('category', [
+        'products' => $products,
+        'category' => $category,
+    ]);
+})->name('categories');

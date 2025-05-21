@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -32,7 +33,11 @@ class ProductResource extends Resource
                     ->required(),
                 TextInput::make('price')->numeric()
                     ->required(),
+                Select::make('categories')->relationship('categories', 'name')->multiple()->preload(),
                 RichEditor::make('description')
+                    ->columnSpanFull()
+                    ->required(),
+                RichEditor::make('specification')
                     ->columnSpanFull()
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('images')
