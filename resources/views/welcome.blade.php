@@ -8,7 +8,7 @@
                      class="flex transition-transform duration-500 ease-in-out -m-5">
                     <div x-ref="slide1" class="flex-shrink-0 w-full p-5">
                         <div class="rounded-xl pt-24 pb-20 relative h-full">
-                            <div class="absolute inset-0 z-10 bg-black/30 "></div>
+                            <div class="absolute inset-0 z-10 bg-black/40 "></div>
                             <img
                                 class="absolute right-0 top-0 w-full h-full object-cover rounded-xl"
                                 src="
