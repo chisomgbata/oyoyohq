@@ -11,7 +11,7 @@ return new class extends Migration {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('key');
-            $table->text('value');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
 
@@ -22,8 +22,36 @@ return new class extends Migration {
 <span> Bank Name: </span> <strong> Bank of America </strong>
 <span> Account Number: </span> <strong> 123456789 </strong>
 <span> Account Name: </span> <strong> John Doe </strong>
-'
+',
+            'type' => 'text',
         ]);
+        $arrayToCreate = [
+            [
+                'key' => 'banner_image',
+                'value' => 'https://placehold.co/600x400/000000/FFFFFF/png'
+            ],
+            [
+                'key' => 'banner_header',
+                'value' => 'Welcome to our website'
+            ],
+            [
+                'key' => 'banner_description',
+                'value' => 'This is a demo website'
+            ],
+            [
+                'key' => 'banner_button_text',
+                'value' => 'Get Started'
+            ],
+            [
+                'key' => 'banner_button_link',
+                'value' => '/category/1'
+            ],
+        ];
+
+        foreach ($arrayToCreate as $item) {
+            Setting::create($item);
+        }
+
     }
 
     public function down(): void

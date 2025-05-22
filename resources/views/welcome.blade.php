@@ -7,23 +7,25 @@
                 <div :style="'transform: translateX(-' + slideWidth + 'px)'"
                      class="flex transition-transform duration-500 ease-in-out -m-5">
                     <div x-ref="slide1" class="flex-shrink-0 w-full p-5">
-                        <div class="rounded-xl pt-24 pb-20 relative h-full"><img
+                        <div class="rounded-xl pt-24 pb-20 relative h-full">
+                            <div class="absolute inset-0 z-10 bg-black/30 "></div>
+                            <img
                                 class="absolute right-0 top-0 w-full h-full object-cover rounded-xl"
-                                src="https://images.unsplash.com/photo-1614399113305-a127bb2ca893?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                src="
+                                /storage/{{($settings->where('key', 'banner_image')->first()->value)}}"
                                 alt="">
                             <div class="max-w-sm sm:max-w-xl relative z-10 flex flex-col items-start px-8 sm:px-24">
-                                <div
-                                    class="px-4 py-1 rounded-full bg-white uppercase text-slate-700 text-xs font-bold tracking-widest font-heading mb-7">
-                                    Sale
-                                </div>
-                                <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance
-                                    every day.</h1>
-                                <p class="text-slate-300 text-sm mb-6">Build a well-presented brand that everyone
-                                    will love.</p>
-                                <h2 class="text-white font-heading text-2xl lg:text-4xl font-semibold mb-6">
-                                    $235.95</h2>                  <a
+                                <h1 class="text-white font-semibold text-4xl mb-4">
+                                    {{$settings->where('key', 'banner_header')->first()->value}}</h1>
+                                <p class="text-slate-300 text-sm mb-6">
+                                    {{$settings->where('key', 'banner_description')->first()->value}}</p>
+                                <a
                                     class="py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200"
-                                    href="#">Go to Collection</a></div>
+                                    href="
+                                    {{$settings->where('key', 'banner_button_link')->first()->value}}
+                                    ">
+                                    {{$settings->where('key', 'banner_button_text')->first()->value}}
+                                </a></div>
                         </div>
                     </div>
                 </div>
@@ -43,8 +45,8 @@
                                 fill="white"></path>
                         </svg>
                     </div>
-                    <div><p class="text-slate-500 font-semibold">Free Shipping</p>
-                        <p class="text-slate-400 text-sm font-medium">From $45</p></div>
+                    <div><p class="text-slate-500 font-semibold">Shipping</p>
+                        <p class="text-slate-400 text-sm font-medium">Safe and Speedy Delivery</p></div>
                 </div>
             </div>
             <div class="w-full sm:w-1/2 lg:w-1/4 p-4">

@@ -4,6 +4,7 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ Auth::onceUsingId(1);
 
 Route::get('/', function (Request $request) {
     return view('welcome', [
+        'settings' => Setting::all(),
     ]);
 })->name('home');
 

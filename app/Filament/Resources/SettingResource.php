@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SettingResource\Pages;
 use App\Models\Setting;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -25,15 +26,23 @@ class SettingResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                TextInput::make('key')
-                    ->required(),
+        $record = $form->getRecord();
 
-                RichEditor::make('value')->columnSpanFull()
-                    ->required(),
+        if ($record->key === 'payment') {
+            $schema = [
+                RichEditor::make('value')->columnSpanFull()->label('')
+            ];
+        } elseif ($record->key === 'banner_image') {
+            $schema = [
+                FileUpload::make('value')->image()->columnSpanFull()->label('')
+            ];
+        } else {
+            $schema = [
+                TextInput::make('value')->columnSpanFull()->label('')
+            ];
+        }
 
-            ]);
+        return $form->schema($schema);
     }
 
     public static function table(Table $table): Table
