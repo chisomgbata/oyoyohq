@@ -17,10 +17,10 @@
                             <div class="max-w-sm sm:max-w-xl relative z-10 flex flex-col items-start px-8 sm:px-24">
                                 <h1 class="text-white font-semibold text-4xl mb-4">
                                     {{$settings->where('key', 'banner_header')->first()->value}}</h1>
-                                <p class="text-slate-300 text-sm mb-6">
+                                <p class="text-slate-700 text-md mb-6">
                                     {{$settings->where('key', 'banner_description')->first()->value}}</p>
                                 <a
-                                    class="py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200"
+                                    class="py-3 px-4 bg-orange-500 rounded-sm text-center text-white text-sm font-medium hover:bg-orange-600 transition duration-200"
                                     href="
                                     {{$settings->where('key', 'banner_button_link')->first()->value}}
                                     ">
