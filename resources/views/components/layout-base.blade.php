@@ -1,9 +1,18 @@
 @php use App\Models\Category; @endphp
 @php $categories = Category::all(); @endphp
+@props(['title'])
     <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Page title</title>
+    <title>
+        @if($title ?? false)
+            {{$title}} | OyoyoHQ
+        @else
+            OyoyoHQ
+        @endif
+    </title>
+    <meta name="description"
+          content="OyoyoHQ is a leading e-commerce platform that offers a wide range of products at competitive prices. Shop now and enjoy fast delivery and excellent customer service.">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,28 +29,36 @@
 </head>
 <body class="antialiased bg-body text-body font-body" hx-boost="true">
 
-<section class="relative overflow-hidden"
-         x-data="{ slideWidth: 0, activeSlide: 0, slideCount: 3, mobileNavOpen: false }">
+<section class="relative overflow-hidden" x-data="{  mobileNavOpen: false }">
     <nav class="relative border-b border-slate-200 mb-4">
         <div class="h-20 py-4 px-6 bg-white border-b border-slate-200">
             <div class="container mx-auto px-4">
                 <div class="relative flex h-full -mx-4 items-center justify-between">
                     <div
-                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex w-full max-w-xs items-center px-6 border border-slate-200 rounded-full">
-                        <input
-                            class="h-12 w-full bg-transparent border-0 text-sm text-slate-500 placeholder-slate-500 outline-none"
-                            type="search" placeholder="Search...">
-                        <button class="inline-block ml-auto text-slate-400 hover:text-slate-500" type="submit">
-                            <svg width="14" height="14" viewbox="0 0 14 14" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.33333 11.6667C9.27885 11.6667 11.6667 9.27885 11.6667 6.33333C11.6667 3.38782 9.27885 1 6.33333 1C3.38782 1 1 3.38782 1 6.33333C1 9.27885 3.38782 11.6667 6.33333 11.6667Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path d="M13.0001 13L10.1001 10.1" stroke="currentColor" stroke-width="1.5"
-                                      stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
+                        class="">
+                        <form
+                            hx-boost="true"
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex w-full max-w-xs items-center px-6 border border-slate-200 rounded-full"
+                            action="{{ route('search') }}" method="get">
+                            <input
+                                class="h-12 w-full bg-transparent border-0 text-sm text-slate-500 placeholder-slate-500 outline-none"
+                                name="q"
+                                value="{{request()->input('q')}}"
+                                x-data="{}"
+                                @input.debounce.500ms="$el.closest('form').submit()"
+                                type="search" placeholder="Search...">
+                            <button class="inline-block ml-auto text-slate-400 hover:text-slate-500" type="submit">
+                                <svg width="14" height="14" viewbox="0 0 14 14" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.33333 11.6667C9.27885 11.6667 11.6667 9.27885 11.6667 6.33333C11.6667 3.38782 9.27885 1 6.33333 1C3.38782 1 1 3.38782 1 6.33333C1 9.27885 3.38782 11.6667 6.33333 11.6667Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M13.0001 13L10.1001 10.1" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                     <div class="w-1/2 px-4">
                         <div class="flex items-center"><a class="inline-block h-9 mr-6 flex-shrink-0"
@@ -89,13 +106,12 @@
         </div>
     </nav>
     <div x-show="mobileNavOpen"
-         x-cloak
-         class="hidden fixed top-0 left-0 bottom-0 w-5/6 max-w-md z-50 ">
-        <div x-on:click="mobileNavOpen = !mobileNavOpen" class="fixed inset-0 bg-purple-800 opacity-70"></div>
+         x-transition
+         class=" fixed top-0 left-0 bottom-0 w-5/6 max-w-md z-50 ">
+        <div x-on:click="mobileNavOpen = !mobileNavOpen" class="fixed inset-0 bg-purple-800 opacity-70"
+        ></div>
         <nav class="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
-            <div class="flex mb-12 items-center"><a class="inline-block mr-auto" href="#"> <img class="h-8"
-                                                                                                src="coleos-assets/logos/logo-coleos-2.svg"
-                                                                                                alt=""> </a>
+            <div class="flex mb-12 items-center">
                 <button x-on:click="mobileNavOpen = !mobileNavOpen">
                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6 18L18 6M6 6L18 18" stroke="#252E4A" stroke-width="2" stroke-linecap="round"
@@ -103,8 +119,10 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex w-full max-w-xs items-center px-6 border border-slate-200 rounded-full"><input
+            <form action="{{ route('search') }}" method="get"
+                  class="flex w-full max-w-xs items-center px-6 border border-slate-200 rounded-full"><input
                     class="h-12 w-full bg-transparent border-0 text-sm text-slate-500 placeholder-slate-500 outline-none"
+                    name="q"
                     type="search" placeholder="Search...">
                 <button class="inline-block ml-auto text-slate-400 hover:text-slate-500" type="submit">
                     <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +134,7 @@
                               stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </button>
-            </div>
+            </form>
             <div class="py-12 mb-auto">
                 <ul class="flex-col">
 

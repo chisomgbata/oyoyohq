@@ -4,7 +4,6 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
-use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -13,24 +12,13 @@ Auth::onceUsingId(1);
 
 
 Route::get('/', function (Request $request) {
-    $query = $request->get('search');
-
-    $products = Product::whereNotNull('published_at')
-        ->when($query, function ($queryBuilder) use ($query) {
-            return $queryBuilder->where('name', 'like', "%{$query}%");
-        })
-        ->paginate(10);
     return view('welcome', [
-        'products' => $products,
-        'categories' => Category::all()
     ]);
 })->name('home');
 
 Route::get('/products/{product}', function (Product $product) {
-
     return view('products.show', [
         'product' => $product,
-        'inCart' => new CartService()->exists($product->id),
     ]);
 })->name('products.show');
 
@@ -74,7 +62,6 @@ Route::post('/checkout', function (OrderRequest $request) {
 
     }
     $order->orderItems()->createMany($orderItemsToAdd);
-    session()->forget('cartItems');
     return redirect()->route('success');
 })->name('checkout.post');
 
@@ -82,9 +69,22 @@ Route::post('/checkout', function (OrderRequest $request) {
 Route::view('/success', 'success')->name('success');
 
 Route::get('/categories/{category}', function (Category $category) {
-    $products = $category->products()->whereNotNull('published_at')->paginate(10);
+    $products = $category->products()->whereNotNull('published_at')->paginate(20);
     return view('category', [
         'products' => $products,
-        'category' => $category,
+        'title' => $category->name,
     ]);
 })->name('categories');
+
+
+Route::get('/search', function () {
+    $products = Product::query()
+        ->where('name', 'like', '%' . request('q') . '%')
+        ->orWhere('description', 'like', '%' . request('q') . '%')
+        ->whereNotNull('published_at')
+        ->paginate(20);
+    return view('category', [
+        'products' => $products,
+        'title' => 'Search results for: ' . request('q'),
+    ]);
+})->name('search');

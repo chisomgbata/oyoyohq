@@ -1,7 +1,7 @@
 <x-layout-base>
     <section class="">
         <div class="container px-4 mx-auto">
-            <h2 class="text-2xl  font-heading font-semibold text-slate-600 tracking-xs mb-14">{{$category->name}}</h2>
+            <h2 class="text-2xl  font-heading font-semibold text-slate-600 tracking-xs mb-14">{{$title}}</h2>
             <div class="flex flex-wrap -mx-4 -mb-8">
                 @foreach($products as $product)
                     <div class="w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">

@@ -77,9 +77,32 @@
                             <h2 class="text-gray-700 text-4xl font-semibold font-heading mb-6 mt-3">
                                 ₦ {{$product->price}}</h2>
                             <div class="flex -mx-2 flex-wrap mb-10">
-                                <div class="w-full flex-1"><a
+                                <div class="w-full flex-1" x-data>
+
+                                    <a
+                                        x-show="$store.cart.inCart({id: {{ $product->id }}})"
+                                        href="{{ route('checkout') }}"
+                                        class="w-full block sm:w-auto underline text-orange-600 font-semibold text-lg">
+                                        Item in cart
+
+                                        <span>Proceed To Checkout</span>
+                                    </a>
+
+                                    <button
+                                        x-show="!$store.cart.inCart({id: {{ $product->id }}})"
+                                        type="button"
+
+                                        x-on:click="$store.cart.add({
+                                id: {{ $product->id }},
+                                name: '{{ $product->name }}',
+                                price: {{ $product->price }},
+                                image: '{{ $product->getFirstMediaUrl() }}',
+                                quantity: 1
+                            })"
                                         class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-orange-500 hover:bg-orange-600 transition duration-200"
-                                        href="#">Add to cart</a></div>
+                                    >Add to cart
+                                    </button>
+                                </div>
                             </div>
                             <div class="border border-slate-200 rounded-sm">
                                 @if($product->specification)

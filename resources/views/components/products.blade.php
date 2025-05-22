@@ -15,7 +15,7 @@
                         <div class="flex items-center justify-between">
                             <div class="max-w-xs pr-32">
                                 <span class="block text-base text-slate-500 mb-1">{{$product->name}}</span>
-                                <span class="block text-base text-slate-300">${{$product->price}}</span>
+                                <span class="block text-base text-slate-600">₦{{$product->price}}</span>
                             </div>
                             <div class="flex-shrink-0"><a
                                     class="inline-flex h-10 py-1 px-4 items-center justify-center text-sm font-medium text-purple-500 hover:text-white bg-white border border-purple-500 rounded-sm hover:bg-purple-500 transition duration-200"
