@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers\ProductsRelationManager;
 use App\Models\Category;
-use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,14 +30,10 @@ class CategoryResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('subtitle')
+                    ->required(),
+                FileUpload::make('image')->image()
 
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn(?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn(?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 

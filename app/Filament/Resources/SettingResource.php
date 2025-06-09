@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SettingResource\Pages;
 use App\Models\Setting;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,6 +17,8 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Illuminate\Database\Eloquent\Model;
 
 class SettingResource extends Resource
 {
@@ -24,6 +28,11 @@ class SettingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function canDelete(Model $record): bool
+    {
+        return false;
+    }
+
     public static function form(Form $form): Form
     {
         $record = $form->getRecord();
@@ -32,10 +41,32 @@ class SettingResource extends Resource
             $schema = [
                 RichEditor::make('value')->columnSpanFull()->label('')
             ];
-        } elseif ($record->key === 'banner_image') {
-            $schema = [
-                FileUpload::make('value')->image()->columnSpanFull()->label('')
-            ];
+        } elseif ($record->type === 'slider') {
+            $schema = [Repeater::make('values')->label('Slides')
+                ->columnSpanFull()
+                ->defaultItems(1)
+                ->addActionLabel('Add Slide')
+                ->columns(2)
+                ->schema([
+                    FileUpload::make('image')->image()->label('Image')->columnSpanFull(),
+                    TextInput::make('title')->label('Title'),
+                    TextInput::make('description')->label('Description'),
+                    ColorPicker::make('color')->label('Color')->default('#ffffff')->columnSpanFull(),
+                ])];
+        } elseif ($record->type === 'social_links') {
+            $schema = [Repeater::make('values')->label('Social Links')
+                ->columnSpanFull()
+                ->defaultItems(1)
+                ->addActionLabel('Add Link')
+                ->columns(2)
+                ->schema([
+                    TextInput::make('name')->label('Name'),
+                    TextInput::make('url')->label('URL'),
+                    IconPicker::make('icon')->label('Icon')->columns(['default' => 5,
+                        'lg' => 5,
+                        '2xl' => 5,])->preload()->sets(['bootstrap-icons']),
+                ])];
+
         } else {
             $schema = [
                 TextInput::make('value')->columnSpanFull()->label('')

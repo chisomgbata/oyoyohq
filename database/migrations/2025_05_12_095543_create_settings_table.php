@@ -10,8 +10,10 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->default('string');
             $table->string('key');
             $table->text('value')->nullable();
+            $table->json('values')->nullable();
             $table->timestamps();
         });
 
@@ -25,32 +27,6 @@ return new class extends Migration {
 ',
             'type' => 'text',
         ]);
-        $arrayToCreate = [
-            [
-                'key' => 'banner_image',
-                'value' => 'https://placehold.co/600x400/000000/FFFFFF/png'
-            ],
-            [
-                'key' => 'banner_header',
-                'value' => 'Welcome to our website'
-            ],
-            [
-                'key' => 'banner_description',
-                'value' => 'This is a demo website'
-            ],
-            [
-                'key' => 'banner_button_text',
-                'value' => 'Get Started'
-            ],
-            [
-                'key' => 'banner_button_link',
-                'value' => '/category/1'
-            ],
-        ];
-
-        foreach ($arrayToCreate as $item) {
-            Setting::create($item);
-        }
 
     }
 

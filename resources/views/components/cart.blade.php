@@ -195,11 +195,12 @@
                             <input
                                 required
                                 type="file"
+                                accept="image/jpeg, image/png, image/jpg"
                                 class="filepond mt-4"
                                 name="proof"
                                 id="proof"
-
                             >
+
                             @error('proof')
                             <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
                             @enderror

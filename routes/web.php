@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
+Auth::onceUsingId(1); // For testing purposes, remove in production
 
 Route::get('/', function (Request $request) {
     return view('welcome', [

@@ -14,13 +14,16 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
+        "@alpinejs/intersect": "^3.14.9",
         "@alpinejs/persist": "^3.14.9",
+        "@splidejs/splide": "^4.1.4",
         "alpinejs": "^3.14.9",
         "filepond": "^4.32.7",
         "filepond-plugin-file-encode": "^2.1.14",
         "filepond-plugin-file-validate-size": "^2.2.8",
         "filepond-plugin-image-exif-orientation": "^1.0.11",
         "filepond-plugin-image-preview": "^4.6.12",
-        "htmx.org": "^2.0.4"
+        "htmx.org": "^2.0.4",
+        "swiper": "^11.2.8"
     }
 }
