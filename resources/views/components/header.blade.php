@@ -6,7 +6,7 @@
                     <div class=" px-4">
                         <div class="flex items-center text-white"><a class="inline-block h-9 mr-6 flex-shrink-0"
                                                                      href="{{ route('home') }}"><h1
-                                    class="font-bold font-mono text-2xl">Oyoyo<span
+                                    class="font-bold font-mono text-4xl">Oyoyo<span
                                         class="text-orange-600">HQ</span></h1></a></div>
                     </div>
 
