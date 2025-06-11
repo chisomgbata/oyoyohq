@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Array.from(inputElements).forEach(inputElement => {
         FilePond.create(inputElement, {
             credits: false,
-            labelIdle: 'Drag and Drop Proof Of Payment or <span class="filepond--label-action">Browse</span>',
+            labelIdle: 'Upload Proof of Payment or <span class="filepond--label-action">Browse</span>',
             storeAsFile: true,
             allowImagePreview: true,
         });
