@@ -88,3 +88,4 @@ Route::get('/search', function () {
         'title' => 'Search results for: ' . request('q'),
     ]);
 })->name('search');
+

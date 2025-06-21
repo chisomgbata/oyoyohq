@@ -72,7 +72,7 @@
 
 
     </style>
-    
+
 </head>
 <body>
 <section class="splide relative">
@@ -84,14 +84,14 @@
                 <li class="splide__slide  h-screen relative flex flex-col justify-center pb-20 px-20 lg:px-40 gap-4 rounded-b-2xl "
                     style="color: {{$slide['color']}}"
                 >
-                    <h1 class=" font-bold text-6xl font-sans mb-10 text-inherit" x-data="{shown:false}"
+                    <h1 class=" font-bold text-3xl lg:text-6xl font-sans mb-10 text-inherit" x-data="{shown:false}"
                         x-intersect:enter="shown = true"
                         x-intersect:leave="shown = false"
                         x-bind:class="{'fade-in-top': shown}"
                     >
                         {{$slide['title']}}
                     </h1>
-                    <p class="mb-10 font-semibold text-2xl font-mono fade-in text-inherit"
+                    <p class="mb-10 font-semibold text-lg lg:text-2xl font-mono fade-in text-inherit"
                        x-data="{shown:false}"
                        x-intersect:enter="shown = true"
                        x-intersect:leave="shown = false"
